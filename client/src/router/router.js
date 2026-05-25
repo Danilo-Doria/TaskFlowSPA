@@ -1,4 +1,4 @@
-import { registerUser } from "../controllers/auth.controller.js";
+import { AccessUser, registerUser } from "../controllers/auth.controller.js";
 import { admin } from "../views/admin.js";
 import { dashboard } from "../views/dashboard.js";
 import { home } from "../views/home.js";
@@ -30,6 +30,8 @@ export function router(path) {
 
   if (path === "/register") {
     registerUser();
+  }else if (path === "/login") {
+    AccessUser();
   }
 
   const links = document.querySelectorAll("[data-link]");
