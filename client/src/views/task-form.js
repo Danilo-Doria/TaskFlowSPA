@@ -18,7 +18,7 @@ export function taskForm() {
                 <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-900">Crear o editar tarea</h1>
                 <p class="mt-4 max-w-2xl text-slate-600">Vista base para registrar una tarea nueva o actualizar una existente.</p>
 
-                <form class="mt-8 grid gap-5">
+                <form id="create-edit-task-form" class="mt-8 grid gap-5">
                     <div>
                         <label class="mb-2 block text-sm font-medium text-slate-700" for="title">Titulo</label>
                         <input id="title" type="text" placeholder="Ej. Preparar proyecto final" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
@@ -45,8 +45,8 @@ export function taskForm() {
                     </div>
 
                     <div class="flex flex-col gap-3 pt-2 sm:flex-row">
-                        <a class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-500" href="/tasks" data-link>Guardar tarea</a>
-                        <a class="inline-flex items-center justify-center rounded-2xl border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 hover:bg-blue-50" href="/tasks" data-link>Cancelar</a>
+                        <button type="submit" class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-500 cursor-pointer">Guardar tarea</button>
+                        <button id="cancel-btn" type="reset" class="inline-flex items-center justify-center rounded-2xl border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 hover:bg-blue-50 cursor-pointer">Cancelar</button>
                     </div>
                 </form>
             </section>

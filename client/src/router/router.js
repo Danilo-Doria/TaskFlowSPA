@@ -1,4 +1,5 @@
 import { AccessUser, registerUser } from "../controllers/auth.controller.js";
+import { createEditTask } from "../controllers/tasks.controller.js";
 import { admin } from "../views/admin.js";
 import { dashboard } from "../views/dashboard.js";
 import { home } from "../views/home.js";
@@ -32,6 +33,10 @@ export function router(path) {
     registerUser();
   }else if (path === "/login") {
     AccessUser();
+  }else if (path === "/task") {
+    
+  }else if (path === "/task-form") {
+    createEditTask()
   }
 
   const links = document.querySelectorAll("[data-link]");

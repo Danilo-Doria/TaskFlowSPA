@@ -1,5 +1,5 @@
 import { router } from "../router/router.js";
-import { loginUser } from "../services/login.service";
+import { loginUser, searchUser } from "../services/login.service";
 import { createUser } from "../services/register.service.js";
 import Swal from 'sweetalert2';
 
@@ -24,9 +24,26 @@ export function registerUser() {
             password: registerPassword.value.trim(),
             role: [registerRole.value]
         }
+        const userExists = await searchUser(newUser.email)
+
+        if (userExists) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Usuario Existente",
+                showConfirmButton: false,
+                timer: 1500,
+                width: "24rem"
+            });
+
+            event.target.reset();
+
+            return
+        }
 
         try {
-            const createdUser = await createUser(newUser);
+
+            await createUser(newUser);
             registerForm.reset();
             history.pushState({}, "", "/login");
             router("/login");
@@ -53,7 +70,7 @@ export function AccessUser() {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Login successful",
+                    title: "Login Exitoso",
                     showConfirmButton: false,
                     timer: 1500,
                     width: "24rem"
@@ -62,21 +79,24 @@ export function AccessUser() {
                 loginForm.reset();
                 history.pushState({}, "", "/dashboard");
                 router("/dashboard");
-                return user;
                 
+                // localStorage.setItem("usuario", JSON.stringify(user[0]));
+
+
+
             } else {
-                 Swal.fire({
+                Swal.fire({
                     position: "top-end",
                     icon: "error",
-                    title: "Login failed",
+                    title: "Login Fallido",
                     showConfirmButton: false,
                     timer: 1500,
                     width: "24rem"
                 });
 
-                loginForm.reset();
+                event.target.reset();
             }
-        
+
 
         } catch (error) {
             console.log(error.message);
