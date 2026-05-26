@@ -1,6 +1,7 @@
 import { router } from "../router/router.js";
 import { loginUser } from "../services/login.service";
 import { createUser } from "../services/register.service.js";
+import Swal from 'sweetalert2';
 
 
 // REGISTER
@@ -14,6 +15,7 @@ export function registerUser() {
 
     registerForm.addEventListener("submit", async (event) => {
         event.preventDefault();
+        event.stopImmediatePropagation();
 
         const newUser = {
             name: registerName.value.trim().toLowerCase(),
@@ -24,7 +26,7 @@ export function registerUser() {
         }
 
         try {
-            await createUser(newUser);
+            const createdUser = await createUser(newUser);
             registerForm.reset();
             history.pushState({}, "", "/login");
             router("/login");
@@ -41,13 +43,44 @@ export function AccessUser() {
     const email = document.getElementById("email");
     const password = document.getElementById("password");
 
-    loginForm.addEventListener("submit", async(event) => {
+    loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const user = await loginUser(email.value.trim(), password.value.trim());
+        try {
+            const user = await loginUser(email.value.trim().toLowerCase(), password.value.trim());
 
-        console.log("USER RESPONSE:", user);
+            if (user) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successful",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    width: "24rem"
+                });
 
+                loginForm.reset();
+                history.pushState({}, "", "/dashboard");
+                router("/dashboard");
+                return user;
+                
+            } else {
+                 Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Login failed",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    width: "24rem"
+                });
+
+                loginForm.reset();
+            }
+        
+
+        } catch (error) {
+            console.log(error.message);
+        }
     })
 }
 
