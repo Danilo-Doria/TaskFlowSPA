@@ -25,8 +25,16 @@
       "description": "",
       "status": "Pendiente",
       "date": "2028-05-29",
-      "userId": "2i5chGe0s-9",
+      "userId": "2i5chGe0s-8",
       "id": "hIypAwld1s4"
+    },
+    {
+      "title": "Maraton",
+      "description": "24k barranquilla",
+      "status": "Completada",
+      "date": "2026-05-14",
+      "userId": "2i5chGe0s-8",
+      "id": "IJd6mQzSIKs"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
