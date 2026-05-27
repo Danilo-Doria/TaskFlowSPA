@@ -13,7 +13,7 @@ export function renderTasks(tasks) {
                         <div class="flex gap-3">
                             <a class="edit-task-btn cursor-pointer rounded-full border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
                             
-                            data-id="${task.title}"
+                            data-id="${task.id}"
                             data-title="${task.title}"
                             data-description="${task.description}"
                             data-status="${task.status}"
@@ -23,7 +23,7 @@ export function renderTasks(tasks) {
 
                             <a class="delete-task-btn cursor-pointer rounded-full border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
 
-                            data-id="${task.title}"
+                            data-id="${task.id}"
                             data-title="${task.title}"
                             data-description="${task.description}"
                             data-status="${task.status}"

@@ -13,28 +13,12 @@
   ],
   "tasks": [
     {
-      "title": "Actividad de Ingles",
-      "description": "Actividad para el viernes",
+      "title": "Correr",
+      "description": "Maraton",
       "status": "En progreso",
-      "date": "2026-05-29",
+      "date": "2026-05-27",
       "userId": "2i5chGe0s-8",
-      "id": "hIypAwld1s4"
-    },
-    {
-      "title": "Actividad de quimica",
-      "description": "",
-      "status": "Pendiente",
-      "date": "2028-05-29",
-      "userId": "2i5chGe0s-8",
-      "id": "hIypAwld1s4"
-    },
-    {
-      "title": "Maraton",
-      "description": "24k barranquilla",
-      "status": "Completada",
-      "date": "2026-05-14",
-      "userId": "2i5chGe0s-8",
-      "id": "IJd6mQzSIKs"
+      "id": "4gWcPbbMfm0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

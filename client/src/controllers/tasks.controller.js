@@ -1,8 +1,8 @@
 import { router } from "../router/router";
-import { createUser } from "../services/register.service";
-import { consultTasks, createTask } from "../services/task.service";
+import { consultTasks, createTask, deleteTask, editTask } from "../services/task.service";
 
 let editTaskData = null;
+
 const currentUser = JSON.parse(localStorage.getItem("user"));
 
 // TASKS VIEW
@@ -13,6 +13,7 @@ export async function showUserTasks() {
     const deleteTaskBtn = document.querySelectorAll(".delete-task-btn");
     const editTaskBtn = document.querySelectorAll(".edit-task-btn");
 
+    // EDIT BUTTONS
     editTaskBtn.forEach(btn => {
         btn.addEventListener("click", () => {
 
@@ -36,6 +37,13 @@ export async function showUserTasks() {
         })
     })
 
+    //DELETE BUTTONS
+    deleteTaskBtn.forEach(btn => {
+        btn.addEventListener("click", async() => {
+            await deleteTask(btn.getAttribute("data-id"));
+            await showUserTasks();
+        })
+    })
 }
 
 
@@ -69,7 +77,7 @@ export function createEditTask() {
         }
 
         if (editTaskData) {
-            //patch
+            await editTask(newTask, editTaskData.id);
         } else {
             await createTask(newTask);
         }

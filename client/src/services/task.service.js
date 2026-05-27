@@ -12,7 +12,7 @@ export async function consultTasks() {
         }
 
         const data = await response.json();
-        renderTasks(data)
+        renderTasks(data);
         return data;
 
     } catch (error) {
@@ -45,5 +45,44 @@ export async function createTask(task) {
 }
 
 // DELETE TASK
+// EDIT TASK
+export async function deleteTask(id) {
+    try {
+        const response = await fetch(`${tasksEndPoint}/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 // EDIT TASK
+export async function editTask(editUser, id) {
+    try {
+        const response = await fetch(`${tasksEndPoint}/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(editUser),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
