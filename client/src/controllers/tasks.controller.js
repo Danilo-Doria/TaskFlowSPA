@@ -1,13 +1,25 @@
 import { router } from "../router/router";
+import { consultTasks, createTask } from "../services/task.service";
 
 
 // TASKS VIEW
-export function showUserTasks() {
-    const taskContainer = document.getElementById("task-container");
+export async function showUserTasks() {
+
+    const data = await consultTasks();
+    
     const deleteTaskBtn = document.querySelectorAll(".delete-task-btn");
-    const taskState = document.querySelectorAll(".task-state");
-    const taskTitle = document.querySelectorAll(".task-title");
-    const taskDescription = document.querySelectorAll(".task-description");
+    const editTaskBtn = document.querySelectorAll(".edit-task-btn");
+    
+    editTaskBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const tasktitle = btn.getAttribute("data-title");
+            const taskdescription = btn.getAttribute("data-description");
+            const taskstatus = btn.getAttribute("data-status");
+            const taskdate = btn.getAttribute("data-date");
+            alert(`Vas a editar la tarea con ID: ${tasktitle} , ${taskdescription}, ${taskstatus}, ${taskdate}`);
+        })
+    })
+
 }
 
 
@@ -21,14 +33,27 @@ export function createEditTask() {
     const createEditDate = document.getElementById("date");
     const cancelBtn = document.getElementById("cancel-btn");
 
-    
+
     createEditTaskForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        alert("hola")
+        const currentUser = JSON.parse(localStorage.getItem("user"));
+
+        const newTask = {
+            title: createEditTitle.value.trim(),
+            description: createEditDescription.value.trim(),
+            status: createEditStatus.value,
+            date: createEditDate.value,
+            userId: currentUser.id
+        }
+
+        createTask(newTask);
+        router("/tasks")
+        history.pushState({}, "", "/tasks");
     });
 
     cancelBtn.addEventListener("click", () => {
-        router("/tasks")
+        router("/tasks");
+        history.pushState({}, "", "/tasks");
     })
 }

@@ -21,7 +21,7 @@ export function taskForm() {
                 <form id="create-edit-task-form" class="mt-8 grid gap-5">
                     <div>
                         <label class="mb-2 block text-sm font-medium text-slate-700" for="title">Titulo</label>
-                        <input id="title" type="text" placeholder="Ej. Preparar proyecto final" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
+                        <input id="title" type="text" required placeholder="Ej. Preparar proyecto final" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
                     </div>
 
                     <div>
@@ -40,7 +40,7 @@ export function taskForm() {
                         </div>
                         <div>
                             <label class="mb-2 block text-sm font-medium text-slate-700" for="date">Fecha limite</label>
-                            <input id="date" type="date" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
+                            <input id="date" required type="date" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
                         </div>
                     </div>
 

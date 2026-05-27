@@ -1,5 +1,5 @@
 import { AccessUser, registerUser } from "../controllers/auth.controller.js";
-import { createEditTask } from "../controllers/tasks.controller.js";
+import { createEditTask, showUserTasks } from "../controllers/tasks.controller.js";
 import { admin } from "../views/admin.js";
 import { dashboard } from "../views/dashboard.js";
 import { home } from "../views/home.js";
@@ -22,22 +22,25 @@ const routes = {
   "/task-form": taskForm,
   "/tasks": tasks,
 };
+function runcontrollers(path) {
+
+  if (path === "/register") {
+    registerUser();
+  }else if (path === "/login") {
+    AccessUser();
+  }else if (path === "/tasks") {
+    showUserTasks()
+  }else if (path === "/task-form") {
+    createEditTask()
+  }
+
+}
 
 export function router(path) {
 
   const view = routes[path] || notFound;
 
   app.innerHTML = view();
-
-  if (path === "/register") {
-    registerUser();
-  }else if (path === "/login") {
-    AccessUser();
-  }else if (path === "/task") {
-    
-  }else if (path === "/task-form") {
-    createEditTask()
-  }
 
   const links = document.querySelectorAll("[data-link]");
 
@@ -50,6 +53,10 @@ export function router(path) {
       history.pushState({}, "", path);
 
       router(path);
+
     });
   });
+
+  runcontrollers(path);
+  
 }

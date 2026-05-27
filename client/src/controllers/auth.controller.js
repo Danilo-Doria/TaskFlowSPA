@@ -15,7 +15,6 @@ export function registerUser() {
 
     registerForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        event.stopImmediatePropagation();
 
         const newUser = {
             name: registerName.value.trim().toLowerCase(),
@@ -80,9 +79,7 @@ export function AccessUser() {
                 history.pushState({}, "", "/dashboard");
                 router("/dashboard");
                 
-                // localStorage.setItem("usuario", JSON.stringify(user[0]));
-
-
+                localStorage.setItem("user", JSON.stringify(user[0]));
 
             } else {
                 Swal.fire({

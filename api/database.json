@@ -8,19 +8,26 @@
       "role": [
         "USER"
       ],
-      "id": "ab2bQj1CeBE"
-    },
-    {
-      "name": "andres",
-      "lastName": "perez",
-      "email": "andres@hotmail.com",
-      "password": "1234d",
-      "role": [
-        "USER"
-      ],
-      "id": "SRVIke4JWHQ"
+      "id": "2i5chGe0s-8"
     }
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "title": "Actividad de Ingles",
+      "description": "Actividad para el viernes",
+      "status": "En progreso",
+      "date": "2026-05-29",
+      "userId": "2i5chGe0s-8",
+      "id": "hIypAwld1s4"
+    },
+    {
+      "title": "Actividad de quimica",
+      "description": "",
+      "status": "Pendiente",
+      "date": "2028-05-29",
+      "userId": "2i5chGe0s-9",
+      "id": "hIypAwld1s4"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
