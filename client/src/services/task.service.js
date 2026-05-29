@@ -86,3 +86,21 @@ export async function editTask(editUser, id) {
         console.log(error.message);
     }
 }
+
+// CONSULT TASK BY ID
+export async function consultTasksById(userId) {
+    try {
+        const response = await fetch(`${tasksEndPoint}?userId=${userId}`)
+        
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        return data;
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}

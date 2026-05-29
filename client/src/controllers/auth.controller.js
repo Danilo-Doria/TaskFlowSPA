@@ -23,6 +23,7 @@ export function registerUser() {
             password: registerPassword.value.trim(),
             role: [registerRole.value]
         }
+        
         const userExists = await searchUser(newUser.email)
 
         if (userExists) {

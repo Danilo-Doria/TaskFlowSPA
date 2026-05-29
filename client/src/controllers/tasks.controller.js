@@ -8,7 +8,7 @@ const currentUser = JSON.parse(localStorage.getItem("user"));
 // TASKS VIEW
 export async function showUserTasks() {
 
-    const data = await consultTasks();
+    await consultTasks();
 
     const deleteTaskBtn = document.querySelectorAll(".delete-task-btn");
     const editTaskBtn = document.querySelectorAll(".edit-task-btn");
