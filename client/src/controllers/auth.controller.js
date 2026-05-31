@@ -1,4 +1,5 @@
-import { router } from "../router/router.js";
+import { navigate } from "../router/router.js";
+import { saveSession } from "../services/auth.service.js";
 import { loginUser, searchUser } from "../services/login.service";
 import { createUser } from "../services/register.service.js";
 import Swal from 'sweetalert2';
@@ -23,30 +24,39 @@ export function registerUser() {
             password: registerPassword.value.trim(),
             role: [registerRole.value]
         }
-        
+
         const userExists = await searchUser(newUser.email)
-
-        if (userExists) {
-            Swal.fire({
-                position: "top-end",
-                icon: "error",
-                title: "Usuario Existente",
-                showConfirmButton: false,
-                timer: 1500,
-                width: "24rem"
-            });
-
-            event.target.reset();
-
-            return
-        }
 
         try {
 
-            await createUser(newUser);
-            registerForm.reset();
-            history.pushState({}, "", "/login");
-            router("/login");
+            if (userExists) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Usuario Existente",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    width: "24rem"
+                });
+
+                event.target.reset();
+
+                return
+                
+            } else {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Usuario Registrado Exitosamente",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    width: "24rem"
+                });
+
+                await createUser(newUser);
+                registerForm.reset();
+                navigate("/login")
+            }
 
         } catch (error) {
             console.log(error.message);
@@ -77,10 +87,8 @@ export function AccessUser() {
                 });
 
                 loginForm.reset();
-                history.pushState({}, "", "/dashboard");
-                router("/dashboard");
-                
-                localStorage.setItem("user", JSON.stringify(user[0]));
+                saveSession(user[0]);
+                navigate("/dashboard")
 
             } else {
                 Swal.fire({

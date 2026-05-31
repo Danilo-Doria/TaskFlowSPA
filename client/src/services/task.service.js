@@ -1,18 +1,16 @@
-import { renderTasks } from "./uiTasks.service";
-
 const tasksEndPoint = "http://localhost:3000/tasks";
 
-// CONSULT TASK
-export async function consultTasks() {
+// CONSULT TASK BY ID
+export async function consultTasksById(userId) {
     try {
-        const response = await fetch(`${tasksEndPoint}`)
+        const response = await fetch(`${tasksEndPoint}?userId=${userId}`)
         
         if (!response.ok) {
             throw new Error(`Error ${response.status}`);
         }
 
         const data = await response.json();
-        renderTasks(data);
+
         return data;
 
     } catch (error) {
@@ -45,7 +43,6 @@ export async function createTask(task) {
 }
 
 // DELETE TASK
-// EDIT TASK
 export async function deleteTask(id) {
     try {
         const response = await fetch(`${tasksEndPoint}/${id}`, {
@@ -87,18 +84,20 @@ export async function editTask(editUser, id) {
     }
 }
 
-// CONSULT TASK BY ID
-export async function consultTasksById(userId) {
+// DELETE TASK BY ID
+export async function deleteTaskById(userId) {
     try {
-        const response = await fetch(`${tasksEndPoint}?userId=${userId}`)
-        
+        const response = await fetch(`${tasksEndPoint}?userId=${userId}`);
+
         if (!response.ok) {
             throw new Error(`Error ${response.status}`);
         }
 
-        const data = await response.json();
+        const tasks = await response.json();
         
-        return data;
+        for (const task of tasks) {
+            await deleteTask(task.id)
+        }
 
     } catch (error) {
         console.log(error.message);

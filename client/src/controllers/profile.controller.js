@@ -1,0 +1,85 @@
+import { navigate } from "../router/router";
+import { getSession, removeSession, saveSession } from "../services/auth.service";
+import { deleteUser, editUser } from "../services/profile.service";
+import { deleteTaskById } from "../services/task.service";
+import Swal from 'sweetalert2';
+
+export function editUserInfo() {
+    const userData = getSession();
+
+    const editUserForm = document.getElementById("edit-user-form");
+    const editUserName = document.getElementById("name");
+    const editUserLastName = document.getElementById("lastName");
+    const editUserEmail = document.getElementById("profile-email");
+    const editUserPassword = document.getElementById("password-new");
+    const saveUserInfo = document.getElementById("save-info");
+    const deleteUserBtn = document.getElementById("delete-user");
+
+    editUserName.value = userData.name;
+    editUserEmail.value = userData.email;
+    editUserLastName.value = userData.lastName;
+
+    editUserForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const editedUser = {
+            name: editUserName.value.trim().toLowerCase(),
+            lastName: editUserLastName.value.trim().toLowerCase(),
+            email: editUserEmail.value.trim().toLowerCase(),
+            password: editUserPassword.value.trim(),
+            role: userData.role,
+            id: userData.id
+        };
+
+        console.log(editedUser)
+        await editUser(editedUser, userData.id);
+        editUserForm.reset();
+
+        saveSession(editedUser);
+        const newUserData = getSession()
+
+        editUserName.value = newUserData.name;
+        editUserEmail.value = newUserData.email;
+        editUserLastName.value = newUserData.lastName;
+
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Datos Guardados Exitosamente",
+            showConfirmButton: false,
+            timer: 1500,
+            width: "24rem"
+        });
+    });
+
+    deleteUserBtn.addEventListener("click", async () => {
+
+        const result = await Swal.fire({
+            title: "¿Estás seguro?",
+            text: "Esta acción eliminará tu cuenta y todas tus tareas.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            reverseButtons: true
+        });
+
+        if (result.isConfirmed) {
+            const userData = getSession();
+
+            await deleteTaskById(userData.id);
+            await deleteUser(userData.id);
+            removeSession();
+
+            await Swal.fire({
+                icon: "success",
+                title: "Cuenta eliminada",
+                text: "Tu cuenta ha sido eliminada correctamente."
+            });
+
+            navigate("/login");
+        }
+    });
+}

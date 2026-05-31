@@ -21,22 +21,26 @@ export function profile() {
                 </aside>
 
                 <section class="rounded-[2rem] border border-blue-100 bg-white p-8 shadow-xl shadow-blue-50">
-                    <form class="grid gap-5">
+                    <form id="edit-user-form" class="grid gap-5">
                         <div>
                             <label class="mb-2 block text-sm font-medium text-slate-700" for="name">Nombre</label>
-                            <input id="name" type="text" value="Ana Torres" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
+                            <input id="name" required type="text" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
+                        </div>
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700" for="name">Apellido</label>
+                            <input id="lastName" required type="text" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
                         </div>
                         <div>
                             <label class="mb-2 block text-sm font-medium text-slate-700" for="profile-email">Correo</label>
-                            <input id="profile-email" type="email" value="ana@taskflow.com" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
+                            <input id="profile-email" required type="email" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
                         </div>
                         <div>
                             <label class="mb-2 block text-sm font-medium text-slate-700" for="password-new">Nueva contrasena</label>
-                            <input id="password-new" type="password" placeholder="Actualiza tu contrasena" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
+                            <input id="password-new" required type="password" placeholder="Actualiza tu contrasena" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
                         </div>
                         <div class="flex flex-col gap-3 pt-2 sm:flex-row">
-                            <a class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-500" href="/profile" data-link>Guardar cambios</a>
-                            <a class="inline-flex items-center justify-center rounded-2xl border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 hover:bg-blue-50" href="/login" data-link>Eliminar mi cuenta</a>
+                            <button type="submit" id="save-info" class="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-500">Guardar cambios</button>
+                            <button type="button" id="delete-user" class="cursor-pointer inline-flex items-center justify-center rounded-2xl border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 hover:bg-blue-50">Eliminar mi cuenta</button>
                         </div>
                     </form>
                 </section>

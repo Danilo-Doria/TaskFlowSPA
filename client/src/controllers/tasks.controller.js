@@ -1,14 +1,17 @@
-import { router } from "../router/router";
-import { consultTasks, createTask, deleteTask, editTask } from "../services/task.service";
+import { navigate } from "../router/router";
+import { getSession } from "../services/auth.service";
+import { consultTasksById, createTask, deleteTask, editTask } from "../services/task.service";
+import { renderTasks } from "../services/uiTasks.service";
 
 let editTaskData = null;
 
-const currentUser = JSON.parse(localStorage.getItem("user"));
-
 // TASKS VIEW
 export async function showUserTasks() {
+    const currentUser = getSession();
 
-    await consultTasks();
+    const tasks = await consultTasksById(currentUser.id);
+
+    renderTasks(tasks.reverse());
 
     const deleteTaskBtn = document.querySelectorAll(".delete-task-btn");
     const editTaskBtn = document.querySelectorAll(".edit-task-btn");
@@ -30,10 +33,10 @@ export async function showUserTasks() {
                 date: taskDate,
                 id: taskId,
                 userId: currentUser.id
-            }
+            };
 
-            router("/task-form");
-            history.pushState({}, "", "/task-form");
+            navigate("/task-form");
+
         })
     })
 
@@ -50,6 +53,8 @@ export async function showUserTasks() {
 // CREATE/EDIT TASK
 
 export function createEditTask() {
+    const currentUser = getSession();
+
     const createEditTaskForm = document.getElementById("create-edit-task-form");
     const createEditTitle = document.getElementById("title");
     const createEditDescription = document.getElementById("description");
@@ -83,13 +88,11 @@ export function createEditTask() {
         }
         
         editTaskData = null;
-        router("/tasks");
-        history.pushState({}, "", "/tasks");
+        navigate("/tasks")
         showUserTasks();
     });
 
     cancelBtn.addEventListener("click", () => {
-        router("/tasks");
-        history.pushState({}, "", "/tasks");
+        navigate("/tasks")
     })
 }

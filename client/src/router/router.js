@@ -1,6 +1,8 @@
 import { AccessUser, registerUser } from "../controllers/auth.controller.js";
 import { showUserInfo } from "../controllers/dashboard.controller.js";
+import { editUserInfo } from "../controllers/profile.controller.js";
 import { createEditTask, showUserTasks } from "../controllers/tasks.controller.js";
+import { getSession } from "../services/auth.service.js";
 import { admin } from "../views/admin.js";
 import { dashboard } from "../views/dashboard.js";
 import { home } from "../views/home.js";
@@ -31,11 +33,14 @@ function runcontrollers(path) {
   }else if (path === "/login") {
     AccessUser();
   }else if (path === "/tasks") {
-    showUserTasks()
+    showUserTasks();
   }else if (path === "/task-form") {
-    createEditTask()
+    createEditTask();
   }else if (path === "/dashboard") {
-    showUserInfo()
+    getSession()
+    showUserInfo();
+  }else if (path === "/profile") {
+    editUserInfo();
   }
 
 }
@@ -54,13 +59,16 @@ export function router(path) {
 
       const path = link.getAttribute("href");
 
-      history.pushState({}, "", path);
-
-      router(path);
+      navigate(link.getAttribute("href"));
 
     });
   });
 
   runcontrollers(path);
   
+}
+
+export function navigate(path) {
+  history.pushState({}, "", path);
+  router(path);
 }

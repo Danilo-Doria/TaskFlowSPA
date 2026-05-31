@@ -13,20 +13,36 @@
   ],
   "tasks": [
     {
-      "title": "Correr",
-      "description": "Maraton 24k",
-      "status": "En progreso",
-      "date": "2026-05-29",
-      "userId": "2i5chGe0s-8",
-      "id": "n9WKwkuEl-k"
-    },
-    {
       "title": "Estudiar",
       "description": "JavaScript",
       "status": "En progreso",
       "date": "2026-05-30",
       "userId": "2i5chGe0s-8",
       "id": "n9WKwkuEl-l"
+    },
+    {
+      "title": "Jugar videojuegos",
+      "description": "Ps2",
+      "status": "Completada",
+      "date": "2026-05-30",
+      "userId": "2i5chGe0s-8",
+      "id": "yo0NR05pyFc"
+    },
+    {
+      "title": "Viajar",
+      "description": "Europa",
+      "status": "Pendiente",
+      "date": "2026-06-06",
+      "userId": "2i5chGe0s-8",
+      "id": "ufijcNiPOIQ"
+    },
+    {
+      "title": "Estudiar Bases de Datos",
+      "description": "SQL",
+      "status": "Pendiente",
+      "date": "2026-06-06",
+      "userId": "2i5chGe0s-8",
+      "id": "KqYdijQH060"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
