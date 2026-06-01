@@ -1,5 +1,5 @@
 import { navigate } from "../router/router";
-import { getSession } from "../services/auth.service";
+import { getSession } from "../services/session.service";
 import { consultTasksById, createTask, deleteTask, editTask } from "../services/task.service";
 import { renderTasks } from "../services/uiTasks.service";
 

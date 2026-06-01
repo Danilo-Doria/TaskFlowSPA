@@ -21,7 +21,7 @@ export function admin() {
             </section>
 
         <section class="mt-8 grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-            <article class="rounded-3xl border border-blue-100 bg-white p-6 shadow-lg shadow-blue-50">
+            <article class="rounded-3xl border border-blue-100 bg-white p-6 shadow-lg shadow-blue-50 self-start">
                 <h2 class="text-xl font-bold text-slate-900">Acciones rapidas</h2>
                 <div class="mt-5 grid gap-4">
                     <a class="rounded-2xl bg-blue-50 px-5 py-4 text-sm font-semibold text-blue-700 hover:bg-blue-100" href="/admin" data-link>Gestionar usuarios</a>
@@ -35,34 +35,52 @@ export function admin() {
                     <h2 class="text-xl font-bold text-slate-900">Usuarios</h2>
                     <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-blue-700">Mockup</span>
                 </div>
-                <div class="mt-5 space-y-4">
-                    <div class="rounded-2xl bg-blue-50 p-4">
-                        <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                            <div>
-                                <p class="font-bold text-slate-900">Ana Torres</p>
-                                <p class="text-sm text-slate-500">ana@taskflow.com</p>
-                                </div>
-                                <div class="flex gap-2">
-                                <span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-blue-700">USER</span>
-                                <a class="rounded-full border border-blue-200 px-3 py-1 text-xs font-semibold text-blue-700 hover:bg-white" href="/admin" data-link>Editar rol</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-2xl bg-blue-50 p-4">
-                        <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                            <div>
-                                <p class="font-bold text-slate-900">Carlos Ruiz</p>
-                                <p class="text-sm text-slate-500">carlos@taskflow.com</p>
-                                </div>
-                                <div class="flex gap-2">
-                                <span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-blue-700">ADMIN</span>
-                                <a class="rounded-full border border-blue-200 px-3 py-1 text-xs font-semibold text-blue-700 hover:bg-white" href="/admin" data-link>Editar rol</a>
-                            </div>
-                        </div>
-                    </div>
+                <div id="users-container" class="mt-5 space-y-4">
+                    
                 </div>
             </article>
         </section>
+
+        <div id="edit-modal" class="absolute inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
+
+            <div class="bg-white p-8 rounded-2xl w-[400px]">
+
+                <h2 class="text-2xl font-bold mb-6">Editar usuario</h2>
+
+                <form id="edit-form" class="flex flex-col gap-4">
+
+                    <label class="block font-bold text-sm">Nombre</label>
+                    <input type="text" id="edit-name" class="border p-3 rounded-xl" required>
+
+                    <label class="block font-bold text-sm">Apellido</label>
+                    <input type="text" id="edit-lastname" class="border p-3 rounded-xl" required>
+
+                    <label class="block font-bold text-sm">Correo</label>
+                    <input type="email" id="edit-email" class="border p-3 rounded-xl" required>
+
+                    <label class="block font-bold text-sm">Contraseña</label>
+                    <input type="password" id="edit-password" class="border p-3 rounded-xl" required>
+                   
+                    <label class="block font-bold text-sm" for="register-role">Rol</label>
+                    <select id="edit-role" class="w-full rounded-2xl border border-blue-100 bg-blue-100 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none">
+                        <option>USER</option>
+                        <option>ADMIN</option>
+                    </select>
+                            
+                    <div class="flex gap-3 mt-4">
+
+                        <button type="submit" id="save-user"
+                        class="bg-indigo-600 text-white px-4 py-3 rounded-xl cursor-pointer">
+                        Guardar
+                        </button>
+
+                        <button type="button" id="close-modal" class="bg-slate-200 px-4 py-3 rounded-xl cursor-pointer">
+                        Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
         </main>
     </div>`;
 }

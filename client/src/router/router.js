@@ -1,8 +1,8 @@
+import { showAllUsers } from "../controllers/admin.controller.js";
 import { AccessUser, registerUser } from "../controllers/auth.controller.js";
 import { showUserInfo } from "../controllers/dashboard.controller.js";
 import { editUserInfo } from "../controllers/profile.controller.js";
 import { createEditTask, showUserTasks } from "../controllers/tasks.controller.js";
-import { getSession } from "../services/auth.service.js";
 import { admin } from "../views/admin.js";
 import { dashboard } from "../views/dashboard.js";
 import { home } from "../views/home.js";
@@ -37,10 +37,11 @@ function runcontrollers(path) {
   }else if (path === "/task-form") {
     createEditTask();
   }else if (path === "/dashboard") {
-    getSession()
     showUserInfo();
   }else if (path === "/profile") {
     editUserInfo();
+  }else {
+    showAllUsers();
   }
 
 }

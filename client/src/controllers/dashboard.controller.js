@@ -1,4 +1,4 @@
-import { getSession, removeSession } from "../services/auth.service";
+import { getSession, removeSession } from "../services/session.service";
 import { consultTasksById } from "../services/task.service";
 
 export async function showUserInfo() {

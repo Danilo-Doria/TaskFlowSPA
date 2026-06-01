@@ -1,5 +1,5 @@
 import { navigate } from "../router/router.js";
-import { saveSession } from "../services/auth.service.js";
+import { saveSession } from "../services/session.service.js";
 import { loginUser, searchUser } from "../services/login.service";
 import { createUser } from "../services/register.service.js";
 import Swal from 'sweetalert2';
@@ -31,7 +31,7 @@ export function registerUser() {
 
             if (userExists) {
                 Swal.fire({
-                    position: "top-end",
+                    position: "center",
                     icon: "error",
                     title: "Usuario Existente",
                     showConfirmButton: false,
@@ -45,7 +45,7 @@ export function registerUser() {
                 
             } else {
                 Swal.fire({
-                    position: "top-end",
+                    position: "center",
                     icon: "success",
                     title: "Usuario Registrado Exitosamente",
                     showConfirmButton: false,
@@ -78,7 +78,7 @@ export function AccessUser() {
 
             if (user) {
                 Swal.fire({
-                    position: "top-end",
+                    position: "center",
                     icon: "success",
                     title: "Login Exitoso",
                     showConfirmButton: false,
@@ -92,7 +92,7 @@ export function AccessUser() {
 
             } else {
                 Swal.fire({
-                    position: "top-end",
+                    position: "center",
                     icon: "error",
                     title: "Login Fallido",
                     showConfirmButton: false,

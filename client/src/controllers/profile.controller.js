@@ -1,5 +1,6 @@
 import { navigate } from "../router/router";
-import { getSession, removeSession, saveSession } from "../services/auth.service";
+import { getSession, removeSession, saveSession } from "../services/session.service";
+import { searchUser } from "../services/login.service";
 import { deleteUser, editUser } from "../services/profile.service";
 import { deleteTaskById } from "../services/task.service";
 import Swal from 'sweetalert2';
@@ -12,7 +13,6 @@ export function editUserInfo() {
     const editUserLastName = document.getElementById("lastName");
     const editUserEmail = document.getElementById("profile-email");
     const editUserPassword = document.getElementById("password-new");
-    const saveUserInfo = document.getElementById("save-info");
     const deleteUserBtn = document.getElementById("delete-user");
 
     editUserName.value = userData.name;
@@ -31,7 +31,30 @@ export function editUserInfo() {
             id: userData.id
         };
 
-        console.log(editedUser)
+        const userExists = await searchUser(editedUser.email)
+
+        if ((userData.email !== editedUser.email) && userExists) {
+
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Usuario Ya existe",
+                showConfirmButton: false,
+                timer: 1500,
+                width: "24rem"
+
+            });
+
+            editUserForm.reset();
+            
+            editUserName.value = userData.name;
+            editUserEmail.value = userData.email;
+            editUserLastName.value = userData.lastName;
+
+            return
+
+        }
+
         await editUser(editedUser, userData.id);
         editUserForm.reset();
 
@@ -43,7 +66,7 @@ export function editUserInfo() {
         editUserLastName.value = newUserData.lastName;
 
         Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Datos Guardados Exitosamente",
             showConfirmButton: false,
