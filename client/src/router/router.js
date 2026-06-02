@@ -43,7 +43,6 @@ function runcontrollers(path) {
   }else {
     showAllUsers();
   }
-
 }
 
 export function router(path) {

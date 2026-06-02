@@ -6,7 +6,7 @@
       "email": "danilodoria519@gmail.com",
       "password": "1234d",
       "role": [
-        "USER"
+        "ADMIN"
       ],
       "id": "2i5chGe0s-8"
     },
@@ -16,7 +16,7 @@
       "email": "andres@hotmail.com",
       "password": "1234d",
       "role": [
-        "ADMIN"
+        "USER"
       ],
       "id": "pz-TmXS7pOk"
     }

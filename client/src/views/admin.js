@@ -47,7 +47,7 @@ export function admin() {
 
                 <h2 class="text-2xl font-bold mb-6">Editar usuario</h2>
 
-                <form id="edit-form" class="flex flex-col gap-4">
+                <form id="edit-form" class="flex flex-col gap-3">
 
                     <label class="block font-bold text-sm">Nombre</label>
                     <input type="text" id="edit-name" class="border p-3 rounded-xl" required>

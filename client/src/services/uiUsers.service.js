@@ -14,6 +14,7 @@ export function renderUsers(users) {
                     <span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-blue-700">USER</span>
                     <button type="button" class="rounded-full border border-blue-200 px-3 py-1 text-xs font-semibold text-blue-700 hover:bg-white cursor-pointer edit-user-btn"
                     
+                    data-id="${user.id}"
                     data-name="${user.name}"
                     data-lastName="${user.lastName}"
                     data-email="${user.email}"
