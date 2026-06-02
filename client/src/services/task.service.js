@@ -1,5 +1,23 @@
 const tasksEndPoint = "http://localhost:3000/tasks";
 
+// CONSULT ALL TASK
+export async function consultAllTasks() {
+    try {
+        const response = await fetch(tasksEndPoint);
+        
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        return data;
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 // CONSULT TASK BY ID
 export async function consultTasksById(userId) {
     try {

@@ -40,7 +40,7 @@ function runcontrollers(path) {
     showUserInfo();
   }else if (path === "/profile") {
     editUserInfo();
-  }else {
+  }else if (path === "/admin"){
     showAllUsers();
   }
 }

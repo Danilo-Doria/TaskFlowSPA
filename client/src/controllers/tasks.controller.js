@@ -1,6 +1,6 @@
 import { navigate } from "../router/router";
 import { getSession } from "../services/session.service";
-import { consultTasksById, createTask, deleteTask, editTask } from "../services/task.service";
+import { consultAllTasks, consultTasksById, createTask, deleteTask, editTask } from "../services/task.service";
 import { renderTasks } from "../services/uiTasks.service";
 
 let editTaskData = null;
@@ -8,8 +8,15 @@ let editTaskData = null;
 // TASKS VIEW
 export async function showUserTasks() {
     const currentUser = getSession();
+    let tasks = null;
 
-    const tasks = await consultTasksById(currentUser.id);
+    if (currentUser.role === "ADMIN") {
+        tasks = await consultAllTasks();
+        console.log(tasks)
+    } else {
+        tasks = await consultTasksById(currentUser.id);
+        console.log(tasks)
+    }
 
     renderTasks(tasks.reverse());
 
@@ -82,8 +89,10 @@ export function createEditTask() {
         }
 
         if (editTaskData) {
+            
             await editTask(newTask, editTaskData.id);
         } else {
+            
             await createTask(newTask);
         }
         

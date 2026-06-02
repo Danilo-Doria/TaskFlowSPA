@@ -1,4 +1,6 @@
 import { consultUsers, editUser } from "../services/admin.service";
+import { searchUser } from "../services/login.service";
+import { getSession, saveSession } from "../services/session.service";
 import { renderUsers } from "../services/uiUsers.service";
 import Swal from 'sweetalert2';
 
@@ -11,7 +13,6 @@ export async function showAllUsers() {
     const editEmail = document.getElementById("edit-email");
     const editPassword = document.getElementById("edit-password");
     const editRole = document.getElementById("edit-role");
-    const saveUser = document.getElementById("save-user");
     const colseModal = document.getElementById("close-modal");
 
     let userId = null;
@@ -49,10 +50,18 @@ export async function showAllUsers() {
             lastName: editLastname.value.trim().toLowerCase(),
             email: editEmail.value.trim().toLowerCase(),
             password: editPassword.value.trim(),
-            role: [editRole.value]
+            role: editRole.value
         }
 
         await editUser(editedUser, userId);
+
+        const sessionUserId = getSession();
+
+        if (userId === sessionUserId.id) {
+            const newSession = await searchUser(editedUser.email);
+            saveSession(newSession[0]);
+        }
+
         editModal.classList.add("hidden");
         await refreshAdminView();
 

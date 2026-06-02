@@ -5,9 +5,7 @@
       "lastName": "doria",
       "email": "danilodoria519@gmail.com",
       "password": "1234d",
-      "role": [
-        "ADMIN"
-      ],
+      "role": "ADMIN",
       "id": "2i5chGe0s-8"
     },
     {
@@ -15,15 +13,13 @@
       "lastName": "perez",
       "email": "andres@hotmail.com",
       "password": "1234d",
-      "role": [
-        "USER"
-      ],
+      "role": "USER",
       "id": "pz-TmXS7pOk"
     }
   ],
   "tasks": [
     {
-      "title": "Estudiar",
+      "title": "Estudiara",
       "description": "JavaScript",
       "status": "En progreso",
       "date": "2026-05-30",
@@ -53,6 +49,14 @@
       "date": "2026-06-06",
       "userId": "2i5chGe0s-8",
       "id": "KqYdijQH060"
+    },
+    {
+      "title": "Ver al junior",
+      "description": "final de la liga",
+      "status": "Pendiente",
+      "date": "2026-06-02",
+      "userId": "pz-TmXS7pOk",
+      "id": "td50WVEwdnw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

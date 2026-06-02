@@ -77,7 +77,7 @@ export function editUserInfo() {
 
     deleteUserBtn.addEventListener("click", async () => {
 
-        const result = await Swal.fire({
+        const result = Swal.fire({
             title: "¿Estás seguro?",
             text: "Esta acción eliminará tu cuenta y todas tus tareas.",
             icon: "warning",
