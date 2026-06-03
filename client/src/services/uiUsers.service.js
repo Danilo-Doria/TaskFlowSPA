@@ -4,11 +4,12 @@ export function renderUsers(users) {
 
     for (const user of users) {
         html += `
-        <div class="rounded-2xl bg-blue-50 p-4">
+        <div class="rounded-2xl bg-blue-50 p-3">
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
                     <p class="font-bold text-slate-900">${user.name} ${user.lastName}</p>
                     <p class="text-sm text-slate-500">${user.email}</p>
+                    <p class="text-sm text-slate-500">ID: ${user.id}</p>
                     </div>
                     <div class="flex gap-2">
                     <span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-blue-700">${user.role}</span>

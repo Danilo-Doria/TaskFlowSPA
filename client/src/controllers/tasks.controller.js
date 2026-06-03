@@ -85,27 +85,27 @@ export function createEditTask() {
 
     if (editTaskData) {
         createEditTitle.value = editTaskData.title,
-            createEditDescription.value = editTaskData.description
+        createEditDescription.value = editTaskData.description
         createEditStatus.value = editTaskData.status
         createEditDate.value = editTaskData.date
     }
 
-
     createEditTaskForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-
-        const newTask = {
+        const task = {
             title: createEditTitle.value.trim(),
             description: createEditDescription.value.trim(),
             status: createEditStatus.value,
             date: createEditDate.value,
-            userId: currentUser.role === "ADMIN" ? editTaskData.userId : currentUser.id
         }
 
         if (editTaskData) {
-            editTask(newTask, editTaskData.id);
+            await editTask(task, editTaskData.id);
+            
         } else {
-            await createTask(newTask);
+            task.userId = currentUser.id
+            await createTask(task);
+
         }
 
         editTaskData = null;
@@ -114,6 +114,7 @@ export function createEditTask() {
     });
 
     cancelBtn.addEventListener("click", () => {
+        editTaskData = null;
         navigate("/tasks")
     })
 }

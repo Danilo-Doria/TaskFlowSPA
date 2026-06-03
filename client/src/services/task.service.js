@@ -80,14 +80,14 @@ export async function deleteTask(id) {
 }
 
 // EDIT TASK
-export async function editTask(editUser, id) {
+export async function editTask(editTask, id) {
     try {
         const response = await fetch(`${tasksEndPoint}/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(editUser),
+            body: JSON.stringify(editTask),
         });
 
         if (!response.ok) {

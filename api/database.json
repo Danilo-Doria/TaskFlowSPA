@@ -9,54 +9,46 @@
       "id": "2i5chGe0s-8"
     },
     {
-      "name": "andres",
-      "lastName": "perez",
-      "email": "andres@hotmail.com",
+      "name": "juan",
+      "lastName": "quintero",
+      "email": "juan@hotmail.com",
       "password": "1234d",
       "role": "USER",
-      "id": "pz-TmXS7pOk"
+      "id": "NpuBBJwDXMQ"
     }
   ],
   "tasks": [
     {
-      "title": "Jugar videojuegos",
-      "description": "Ps2",
-      "status": "Completada",
-      "date": "2026-05-30",
-      "userId": "2i5chGe0s-8",
-      "id": "yo0NR05pyFc"
-    },
-    {
-      "title": "Hacer Ejercicio",
-      "description": "Por la noche",
-      "status": "En progreso",
-      "date": "2026-06-06",
-      "userId": "2i5chGe0s-8",
-      "id": "ufijcNiPOIQ"
-    },
-    {
       "title": "Estudiar Bases de Datos",
       "description": "SQL",
-      "status": "Pendiente",
-      "date": "2026-06-06",
+      "status": "En progreso",
+      "date": "2026-06-09",
       "userId": "2i5chGe0s-8",
       "id": "KqYdijQH060"
     },
     {
-      "title": "Ver el partido del Junior",
-      "description": "",
-      "status": "Completada",
-      "date": "2026-06-02",
-      "userId": "pz-TmXS7pOk",
-      "id": "td50WVEwdnw"
+      "title": "Juagar God of War",
+      "description": "Ps5",
+      "status": "Pendiente",
+      "date": "2026-06-03",
+      "userId": "NpuBBJwDXMQ",
+      "id": "7D3Ye9qRTNk"
     },
     {
-      "title": "Viajar a Europa",
-      "description": "España e Italia",
-      "status": "Pendiente",
-      "date": "2026-06-26",
-      "userId": "pz-TmXS7pOk",
-      "id": "miwunHEaUfY"
+      "title": "Jugar FiFa 26",
+      "description": "Xbox seires X",
+      "status": "En progreso",
+      "date": "2026-06-03",
+      "userId": "NpuBBJwDXMQ",
+      "id": "KBjprID8Rm4"
+    },
+    {
+      "title": "Jugar DOOM",
+      "description": "PC",
+      "status": "Completada",
+      "date": "2026-06-05",
+      "userId": "NpuBBJwDXMQ",
+      "id": "sdd5CBXHszk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
