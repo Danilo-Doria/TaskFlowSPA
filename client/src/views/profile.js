@@ -35,8 +35,8 @@ export function profile() {
                             <input id="profile-email" required type="email" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
                         </div>
                         <div>
-                            <label class="mb-2 block text-sm font-medium text-slate-700" for="password-new">Nueva contrasena</label>
-                            <input id="password-new" required type="password" placeholder="Actualiza tu contrasena" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
+                            <label class="mb-2 block text-sm font-medium text-slate-700" for="password-new">Nueva contraseña</label>
+                            <input id="password-new" required type="password" placeholder="Actualiza tu contraseña" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
                         </div>
                         <div class="flex flex-col gap-3 pt-2 sm:flex-row">
                             <button type="submit" id="save-info" class="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-500">Guardar cambios</button>

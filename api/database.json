@@ -19,14 +19,6 @@
   ],
   "tasks": [
     {
-      "title": "Estudiara",
-      "description": "JavaScript",
-      "status": "En progreso",
-      "date": "2026-05-30",
-      "userId": "2i5chGe0s-8",
-      "id": "n9WKwkuEl-l"
-    },
-    {
       "title": "Jugar videojuegos",
       "description": "Ps2",
       "status": "Completada",
@@ -35,9 +27,9 @@
       "id": "yo0NR05pyFc"
     },
     {
-      "title": "Viajar",
-      "description": "Europa",
-      "status": "Pendiente",
+      "title": "Hacer Ejercicio",
+      "description": "Por la noche",
+      "status": "En progreso",
       "date": "2026-06-06",
       "userId": "2i5chGe0s-8",
       "id": "ufijcNiPOIQ"
@@ -51,12 +43,20 @@
       "id": "KqYdijQH060"
     },
     {
-      "title": "Ver al junior",
-      "description": "final de la liga",
-      "status": "Pendiente",
+      "title": "Ver el partido del Junior",
+      "description": "",
+      "status": "Completada",
       "date": "2026-06-02",
       "userId": "pz-TmXS7pOk",
       "id": "td50WVEwdnw"
+    },
+    {
+      "title": "Viajar a Europa",
+      "description": "España e Italia",
+      "status": "Pendiente",
+      "date": "2026-06-26",
+      "userId": "pz-TmXS7pOk",
+      "id": "miwunHEaUfY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

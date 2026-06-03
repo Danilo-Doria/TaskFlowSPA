@@ -1,3 +1,4 @@
+import { navigate } from "../router/router";
 import { getSession, removeSession } from "../services/session.service";
 import { consultTasksById } from "../services/task.service";
 
@@ -36,6 +37,7 @@ export async function showUserInfo() {
 
     logoutBtn.addEventListener("click", () => {
         removeSession();
+        navigate("/")
     });
     
 }

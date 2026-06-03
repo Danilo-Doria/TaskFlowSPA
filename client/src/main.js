@@ -3,8 +3,8 @@ import "./styles/global.css";
 
 
 // ROUTER
-router(window.location.pathname);
-
 window.addEventListener("popstate", () => {
   router(window.location.pathname);
 });
+
+router(window.location.pathname);

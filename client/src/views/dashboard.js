@@ -9,7 +9,7 @@ export function dashboard() {
                     <a class="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-700" href="/tasks" data-link>Tareas</a>
                     <a class="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-700" href="/profile" data-link>Perfil</a>
                     <a class="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-700" href="/admin" data-link>Admin</a>
-                    <a id="logout-btn" class="rounded-full px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50" href="/login" data-link>Logout</a>
+                    <a id="logout-btn" class="rounded-full px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 cursor-pointer">Logout</a>
                 </nav>
             </div>
         </header>

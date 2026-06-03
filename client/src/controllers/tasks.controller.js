@@ -2,6 +2,7 @@ import { navigate } from "../router/router";
 import { getSession } from "../services/session.service";
 import { consultAllTasks, consultTasksById, createTask, deleteTask, editTask } from "../services/task.service";
 import { renderTasks } from "../services/uiTasks.service";
+import Swal from 'sweetalert2';
 
 let editTaskData = null;
 
@@ -12,10 +13,8 @@ export async function showUserTasks() {
 
     if (currentUser.role === "ADMIN") {
         tasks = await consultAllTasks();
-        console.log(tasks)
     } else {
         tasks = await consultTasksById(currentUser.id);
-        console.log(tasks)
     }
 
     renderTasks(tasks.reverse());
@@ -32,6 +31,7 @@ export async function showUserTasks() {
             const taskStatus = btn.getAttribute("data-status");
             const taskDate = btn.getAttribute("data-date");
             const taskId = btn.getAttribute("data-id");
+            const userId = btn.getAttribute("data-userId");
 
             editTaskData = {
                 title: taskTitle,
@@ -39,7 +39,7 @@ export async function showUserTasks() {
                 status: taskStatus,
                 date: taskDate,
                 id: taskId,
-                userId: currentUser.id
+                userId: userId
             };
 
             navigate("/task-form");
@@ -49,9 +49,23 @@ export async function showUserTasks() {
 
     //DELETE BUTTONS
     deleteTaskBtn.forEach(btn => {
-        btn.addEventListener("click", async() => {
-            await deleteTask(btn.getAttribute("data-id"));
-            await showUserTasks();
+        btn.addEventListener("click", async () => {
+            const result = await Swal.fire({
+                title: "¿Estás seguro?",
+                text: "Esta acción eliminará tu tarea.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                reverseButtons: true
+            });
+
+            if (result.isConfirmed) {
+                await deleteTask(btn.getAttribute("data-id"));
+                await showUserTasks();
+            }
         })
     })
 }
@@ -71,13 +85,13 @@ export function createEditTask() {
 
     if (editTaskData) {
         createEditTitle.value = editTaskData.title,
-        createEditDescription.value = editTaskData.description
+            createEditDescription.value = editTaskData.description
         createEditStatus.value = editTaskData.status
-        createEditDate.value = editTaskData.date  
+        createEditDate.value = editTaskData.date
     }
 
 
-    createEditTaskForm.addEventListener("submit", async(event) => {
+    createEditTaskForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const newTask = {
@@ -85,17 +99,15 @@ export function createEditTask() {
             description: createEditDescription.value.trim(),
             status: createEditStatus.value,
             date: createEditDate.value,
-            userId: currentUser.id
+            userId: currentUser.role === "ADMIN" ? editTaskData.userId : currentUser.id
         }
 
         if (editTaskData) {
-            
-            await editTask(newTask, editTaskData.id);
+            editTask(newTask, editTaskData.id);
         } else {
-            
             await createTask(newTask);
         }
-        
+
         editTaskData = null;
         navigate("/tasks")
         showUserTasks();

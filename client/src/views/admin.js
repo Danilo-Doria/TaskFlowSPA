@@ -41,7 +41,7 @@ export function admin() {
             </article>
         </section>
 
-        <div id="edit-modal" class="absolute inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
+        <div id="edit-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
 
             <div class="bg-white p-8 rounded-2xl w-[400px]">
 
