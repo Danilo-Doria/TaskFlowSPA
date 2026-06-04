@@ -22,7 +22,7 @@ export function renderTasks(tasks) {
 
                             >Editar</a>
 
-                            <a class="delete-task-btn cursor-pointer rounded-full border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+                            <a class="delete-task-btn cursor-pointer rounded-full border border-red-200 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-100"
 
                             data-id="${task.id}"
                             

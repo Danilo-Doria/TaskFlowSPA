@@ -40,7 +40,7 @@ export function profile() {
                         </div>
                         <div class="flex flex-col gap-3 pt-2 sm:flex-row">
                             <button type="submit" id="save-info" class="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-500">Guardar cambios</button>
-                            <button type="button" id="delete-user" class="cursor-pointer inline-flex items-center justify-center rounded-2xl border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 hover:bg-blue-50">Eliminar mi cuenta</button>
+                            <button type="button" id="delete-user" class="cursor-pointer inline-flex items-center justify-center rounded-2xl border border-red-200 bg-white px-5 py-3 text-sm font-bold text-red-700 hover:bg-red-100">Eliminar mi cuenta</button>
                         </div>
                     </form>
                 </section>

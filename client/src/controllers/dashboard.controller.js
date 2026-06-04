@@ -31,7 +31,10 @@ export async function showUserInfo() {
     completed.textContent = completedTasks;
 
     const userName = document.getElementById("userName");
-    userName.textContent = currentUser.name;
+    const name = currentUser.name[0].toUpperCase()+ currentUser.name.slice(1);
+    const lastName = currentUser.lastName[0].toUpperCase()+ currentUser.lastName.slice(1)
+    
+    userName.textContent = `${name} ${lastName}`;
 
     const logoutBtn = document.getElementById("logout-btn");
 

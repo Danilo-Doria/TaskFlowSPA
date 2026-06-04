@@ -21,16 +21,14 @@ export function admin() {
             </section>
 
         <section class="mt-8 grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-            <article class="rounded-3xl border border-blue-100 bg-white p-6 shadow-lg shadow-blue-50 self-start">
-                <h2 class="text-xl font-bold text-slate-900">Acciones rapidas</h2>
-                <div class="mt-5 grid gap-4">
-                    <a class="rounded-2xl bg-blue-50 px-5 py-4 text-sm font-semibold text-blue-700 hover:bg-blue-100" href="/admin" data-link>Gestionar usuarios</a>
-                    <a class="rounded-2xl bg-blue-50 px-5 py-4 text-sm font-semibold text-blue-700 hover:bg-blue-100" href="/tasks" data-link>Ver todas las tareas</a>
-                    <a class="rounded-2xl bg-blue-50 px-5 py-4 text-sm font-semibold text-blue-700 hover:bg-blue-100" href="/dashboard" data-link>Volver al dashboard</a>
+            <article class="rounded-3xl border border-blue-100 bg-white p-6 shadow-lg shadow-blue-50 self-start overflow-auto h-72">
+                <h2 class="text-xl font-bold text-slate-900">Tareas</h2>
+                <div id="task-container" class="mt-5 grid gap-4">
+                    
                 </div>
             </article>
 
-            <article class="rounded-3xl border border-blue-100 bg-white p-6 shadow-lg shadow-blue-50">
+            <article class="rounded-3xl border border-blue-100 bg-white p-6 shadow-lg shadow-blue-50 overflow-auto h-72">
                 <div class="flex items-center justify-between">
                     <h2 class="text-xl font-bold text-slate-900">Usuarios</h2>
                     <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-blue-700">Mockup</span>
@@ -77,6 +75,46 @@ export function admin() {
                         <button type="button" id="close-modal" class="bg-slate-200 px-4 py-3 rounded-xl cursor-pointer">
                         Cancelar
                         </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="edit-task-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
+
+            <div class="bg-white p-8 rounded-2xl w-[400px]">
+
+                <h2 class="text-2xl font-bold mb-6">Editar tarea</h2>
+
+                <form id="edit-task-form" class="mt-8 grid gap-5">
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-slate-700" for="edit-task-title">Titulo</label>
+                        <input id="edit-task-title" type="text" required placeholder="Ej. Preparar proyecto final" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none" />
+                    </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-slate-700" for="edit-task-description">Descripcion</label>
+                        <textarea id="edit-task-description" rows="5" placeholder="Describe la tarea..." class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none"></textarea>
+                    </div>
+
+                    <div class="grid gap-5 md:grid-cols-2">
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700" for="edit-task-status">Estado</label>
+                            <select id="edit-task-status" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none">
+                                <option>Pendiente</option>
+                                <option>En progreso</option>
+                                <option>Completada</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700" for="edit-task-date">Fecha limite</label>
+                            <input id="edit-task-date" required type="date" class="w-full rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-slate-900 focus:border-blue-400 focus:outline-none" />
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-3 pt-2 sm:flex-row">
+                        <button type="submit" class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-500 cursor-pointer">Guardar tarea</button>
+                        <button id="cancel-edit-btn" type="reset" class="inline-flex items-center justify-center rounded-2xl border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 hover:bg-blue-50 cursor-pointer">Cancelar</button>
                     </div>
                 </form>
             </div>

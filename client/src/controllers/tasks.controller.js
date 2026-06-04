@@ -4,18 +4,13 @@ import { consultAllTasks, consultTasksById, createTask, deleteTask, editTask } f
 import { renderTasks } from "../services/uiTasks.service";
 import Swal from 'sweetalert2';
 
+
 let editTaskData = null;
 
 // TASKS VIEW
 export async function showUserTasks() {
     const currentUser = getSession();
-    let tasks = null;
-
-    if (currentUser.role === "ADMIN") {
-        tasks = await consultAllTasks();
-    } else {
-        tasks = await consultTasksById(currentUser.id);
-    }
+    const tasks = await consultTasksById(currentUser.id);
 
     renderTasks(tasks.reverse());
 
@@ -26,20 +21,19 @@ export async function showUserTasks() {
     editTaskBtn.forEach(btn => {
         btn.addEventListener("click", () => {
 
-            const taskTitle = btn.getAttribute("data-title");
-            const taskDescription = btn.getAttribute("data-description");
-            const taskStatus = btn.getAttribute("data-status");
-            const taskDate = btn.getAttribute("data-date");
-            const taskId = btn.getAttribute("data-id");
-            const userId = btn.getAttribute("data-userId");
+            const taskTitle = btn.dataset.title;
+            const taskDescription = btn.dataset.description;
+            const taskStatus = btn.dataset.status;
+            const taskDate = btn.dataset.date;
+            const taskId = btn.dataset.id;
+            const userId = btn.dataset.userId;
 
             editTaskData = {
                 title: taskTitle,
                 description: taskDescription,
                 status: taskStatus,
                 date: taskDate,
-                id: taskId,
-                userId: userId
+                id: taskId
             };
 
             navigate("/task-form");
@@ -63,7 +57,7 @@ export async function showUserTasks() {
             });
 
             if (result.isConfirmed) {
-                await deleteTask(btn.getAttribute("data-id"));
+                await deleteTask(btn.dataset.id);
                 await showUserTasks();
             }
         })
@@ -85,32 +79,30 @@ export function createEditTask() {
 
     if (editTaskData) {
         createEditTitle.value = editTaskData.title,
-        createEditDescription.value = editTaskData.description
-        createEditStatus.value = editTaskData.status
-        createEditDate.value = editTaskData.date
+            createEditDescription.value = editTaskData.description,
+            createEditStatus.value = editTaskData.status,
+            createEditDate.value = editTaskData.date
     }
 
     createEditTaskForm.addEventListener("submit", async (event) => {
         event.preventDefault();
+
         const task = {
             title: createEditTitle.value.trim(),
             description: createEditDescription.value.trim(),
             status: createEditStatus.value,
             date: createEditDate.value,
+            userId: currentUser.id
         }
 
         if (editTaskData) {
             await editTask(task, editTaskData.id);
-            
         } else {
-            task.userId = currentUser.id
             await createTask(task);
-
         }
 
         editTaskData = null;
         navigate("/tasks")
-        showUserTasks();
     });
 
     cancelBtn.addEventListener("click", () => {

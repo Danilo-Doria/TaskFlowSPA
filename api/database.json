@@ -44,11 +44,19 @@
     },
     {
       "title": "Jugar DOOM",
-      "description": "PC",
+      "description": "Ps5",
       "status": "Completada",
-      "date": "2026-06-05",
+      "date": "2026-06-02",
       "userId": "NpuBBJwDXMQ",
       "id": "sdd5CBXHszk"
+    },
+    {
+      "title": "Aprender React",
+      "description": "Curso en Youtube",
+      "status": "Pendiente",
+      "date": "2026-07-11",
+      "userId": "2i5chGe0s-8",
+      "id": "gL_tsBhnaNY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

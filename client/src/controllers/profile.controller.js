@@ -15,18 +15,18 @@ export function editUserInfo() {
     const editUserPassword = document.getElementById("password-new");
     const deleteUserBtn = document.getElementById("delete-user");
 
-    editUserName.value = userData.name;
+    editUserName.value = userData.name[0].toUpperCase() + userData.name.slice(1);
+    editUserLastName.value = userData.lastName[0].toUpperCase() + userData.lastName.slice(1);
     editUserEmail.value = userData.email;
-    editUserLastName.value = userData.lastName;
 
     editUserForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const editedUser = {
-            name: editUserName.value.trim().toLowerCase(),
-            lastName: editUserLastName.value.trim().toLowerCase(),
-            email: editUserEmail.value.trim().toLowerCase(),
-            password: editUserPassword.value.trim(),
+            name: editUserName.value.trim().toLowerCase() || userData.name,
+            lastName: editUserLastName.value.trim().toLowerCase() || userData.lastName,
+            email: editUserEmail.value.trim().toLowerCase() || userData.email,
+            password: editUserPassword.value.trim() || userData.password,
             role: userData.role,
             id: userData.id
         };
