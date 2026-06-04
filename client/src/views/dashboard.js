@@ -10,7 +10,8 @@ export function dashboard() {
                     <a class="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white" href="/dashboard" data-link>Dashboard</a>
                     <a class="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-700" href="/tasks" data-link>Tareas</a>
                     <a class="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-700" href="/profile" data-link>Perfil</a>
-                    <a class="${getSession().role !== "ADMIN" ? "hidden" : ""} rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-700" href="/admin" data-link>Admin</a>
+                    ${getSession().role === "ADMIN" ? '<a class="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-700" href="/admin" data-link>Admin</a>' : ""}
+
                     <a id="logout-btn" class="rounded-full px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 cursor-pointer">Logout</a>
                 </nav>
             </div>

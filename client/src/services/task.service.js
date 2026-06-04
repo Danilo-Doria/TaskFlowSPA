@@ -3,14 +3,14 @@ const tasksEndPoint = "http://localhost:3000/tasks";
 // CONSULT ALL TASK
 export async function consultAllTasks() {
     try {
-        const response = await fetch(tasksEndPoint);
+        const response = await fetch(`${tasksEndPoint}?_embed=user`);
         
         if (!response.ok) {
             throw new Error(`Error ${response.status}`);
         }
 
         const data = await response.json();
-
+        
         return data;
 
     } catch (error) {

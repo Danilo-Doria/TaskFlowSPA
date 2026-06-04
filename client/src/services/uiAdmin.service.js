@@ -49,8 +49,8 @@ export function renderTasksAdmin(tasks) {
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
                     <p class="task-state text-xs font-bold uppercase tracking-[0.25em] text-blue-600">${task.status} - ${new Date(task.date).toLocaleDateString("es-CO")}</p>
-                    <h2 class="task-title text-lg font-bold text-slate-900">${task.title}</h2>
-                    <p class="task-description text-md max-w-2xl text-slate-600">${task.description} - ${task.userId}</p>
+                    <h2 class="task-title text-md font-bold text-slate-900">${task.title}</h2>
+                    <p class="task-description text-md max-w-2xl text-slate-600">${task.description} - Creado por: ${task.user.name}</p>
                 </div>
 
                 <div class="flex gap-2">
