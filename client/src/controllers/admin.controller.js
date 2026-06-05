@@ -7,7 +7,7 @@ import { consultAllTasks, deleteTask, deleteTaskById, editTask } from "../servic
 import { renderTasksAdmin, renderUsersAdmin } from "../services/uiAdmin.service";
 import Swal from 'sweetalert2';
 
-export async function showAllUsers() {
+export async function adminSetup() {
 
     // EDIT USER FORM
     const editModal = document.getElementById("edit-modal");
@@ -30,6 +30,7 @@ export async function showAllUsers() {
 
     let userId = null;
     let taskId = null;
+    let originalEmail = "";
 
     async function refreshAdminView() {
 
@@ -48,6 +49,8 @@ export async function showAllUsers() {
                 editModal.classList.remove("hidden");
 
                 userId = btn.dataset.id;
+                originalEmail = btn.dataset.email;
+
                 editName.value = btn.dataset.name;
                 editLastname.value = btn.dataset.lastname;
                 editEmail.value = btn.dataset.email;
@@ -126,8 +129,10 @@ export async function showAllUsers() {
     }
 
     await refreshAdminView();
+
     const sessionUser = getSession();
 
+    // EDIT USER FORM
     editForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -138,54 +143,58 @@ export async function showAllUsers() {
             password: editPassword.value.trim(),
             role: editRole.value
         }
-        
-        const userExists = await searchUser(editedUser.email)
 
-        if ((sessionUser.email !== editedUser.email) && userExists) {
+        if (originalEmail !== editedUser.email) {
+            const userExists = await searchUser(editedUser.email)
 
-            Swal.fire({
-                position: "center",
-                icon: "error",
-                title: "Usuario con correo exsistente",
-                showConfirmButton: false,
-                timer: 1500,
-                width: "24rem"
-                
-            });
-            editModal.classList.add("hidden");
-            return
+            if (userExists) {
+
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Usuario con correo exsistente",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    width: "24rem"
+
+                });
+
+                editModal.classList.add("hidden");
+                return
+            }
         }
 
-            await editUser(editedUser, userId);
+        await editUser(editedUser, userId);
 
-            editModal.classList.add("hidden");
-            await refreshAdminView();
+        editModal.classList.add("hidden");
+        await refreshAdminView();
 
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Datos Editados Exitosamente",
-                showConfirmButton: false,
-                timer: 1500,
-                width: "24rem"
-            });
-
-
-            if (userId === sessionUser.id) {
-                const newSession = await searchUser(editedUser.email);
-                saveSession(newSession[0]);
-            }
-
-            if (userId === sessionUser.id && editedUser.role === "USER") {
-                navigate("/dashboard")
-            }
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Datos Editados Exitosamente",
+            showConfirmButton: false,
+            timer: 1500,
+            width: "24rem"
         });
+
+
+        if (userId === sessionUser.id) {
+            const newSession = await searchUser(editedUser.email);
+            saveSession(newSession[0]);
+        }
+
+        if (userId === sessionUser.id && editedUser.role === "USER") {
+            navigate("/dashboard")
+        }
+    });
 
     closeModal.addEventListener("click", () => {
         editForm.reset();
         editModal.classList.add("hidden");
     });
 
+    // EDIT TASK FORM
     editTaskForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 

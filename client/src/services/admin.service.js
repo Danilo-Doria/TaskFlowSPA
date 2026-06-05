@@ -1,10 +1,11 @@
 // API FETCH
 const usersEndPoint = "http://localhost:3000/users";
 
+// CONSULT ALL USERS
 export async function consultUsers() {
     try {
         const response = await fetch(`${usersEndPoint}`);
-        
+
         if (!response.ok) {
             throw new Error(`Error ${response.status}`);
         }
@@ -14,7 +15,7 @@ export async function consultUsers() {
         if (data.length === 0) {
             return null;
         }
-        
+
         return data;
 
     } catch (error) {

@@ -19,6 +19,7 @@ export function editUserInfo() {
     editUserLastName.value = userData.lastName[0].toUpperCase() + userData.lastName.slice(1);
     editUserEmail.value = userData.email;
 
+    // EDIT USER FORM
     editUserForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -46,7 +47,7 @@ export function editUserInfo() {
             });
 
             editUserForm.reset();
-            
+
             editUserName.value = userData.name;
             editUserEmail.value = userData.email;
             editUserLastName.value = userData.lastName;
@@ -76,7 +77,6 @@ export function editUserInfo() {
     });
 
     deleteUserBtn.addEventListener("click", async () => {
-
         const result = await Swal.fire({
             title: "¿Estás seguro?",
             text: "Esta acción eliminará tu cuenta y todas tus tareas.",

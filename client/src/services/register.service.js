@@ -1,6 +1,7 @@
 // API FETCH
 const usersEndPoint = "http://localhost:3000/users";
 
+// CREATE USER
 export async function createUser(newUser) {
     try {
         const response = await fetch(usersEndPoint, {

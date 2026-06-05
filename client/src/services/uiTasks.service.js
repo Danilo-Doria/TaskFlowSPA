@@ -1,3 +1,4 @@
+// RENDER TASKS IN TASKS VIEW
 export function renderTasks(tasks) {
     const taskContainer = document.getElementById("task-container");
     let html = "";

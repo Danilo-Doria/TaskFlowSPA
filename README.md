@@ -1,16 +1,27 @@
 # TaskFlowSPA
-Project to understand the structure of a single-page application (SPA), improve its logic and distribution of responsibilities, as well as API usage
+Project to understand the structure of a single-page application (SPA), improve its logic and distribution of responsibilities, as well as API usage.
+
+## 📖 Description
+The main objective of this project is to understand modern web development by implementing a robust SPA architecture using Vanilla JavaScript, Tailwind CSS for responsive design, and a simulated backend using JSON Server.
+
+The application evolved from a static site into a task management platform with a comprehensive authentication and role-based access control system.
+
+### 🔐 Key Features:
+- **User Management:** Account registration, login, profile data updates, and account deletion.
+- **Access Control:** Restriction of views and routes based on authentication status and user role (User / Administrator).
+- **Task CRUD:** Standard users can create, view, edit, and delete their own tasks.
+- **Administration Panel:** The administrator user has access to a global panel to manage (full CRUD) all users and all tasks in the system.
 
 ## 📂 Project Structure
 
-El proyecto está dividido en dos partes principales:
+The project is divided in two main parts:
 
-- **`/client`**: Contiene la interfaz de usuario construida con **Vite** y **Tailwind CSS**.
-- **`/api`**: Contiene el backend, simulando el servidor de datos utilizando **json-server**.
+- **`/client`**: Contains the user interface built with **Vite** and **Tailwind CSS**.
+- **`/server`**: Contains the backend, simulating the data server using JSON Server. **json-server**.
 
 ```bash
 .
-├── api
+├── server
 │   ├── database.json
 ├── client
 │   ├── index.html
@@ -31,23 +42,23 @@ El proyecto está dividido en dos partes principales:
 
 ```
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Technologies Used
 
 - **Frontend:** HTML5, JavaScript (ES6+), Tailwind CSS.
-- **Herramientas de Construcción:** Vite.
-- **Backend (Simulado):** JSON Server.
+- **Build Tool:** Vite.
+- **Backend (Simulated):** JSON Server.
 
 ## 🚀 Installation
 
-1.  Instala las dependencias en la carpeta del `cliente`:
+1.  Install the dependencies in the folder `client`:
     ```bash
     cd client
     npm install
     npm run dev
     ```
-2.  Configura e inicia tu servidor en la carpeta `api`:
+2.  Set up and start your server in the folder `server`:
     ```bash
-    cd api
+    cd server
     npm install
     npx json-server database.json
     ```
@@ -56,8 +67,8 @@ El proyecto está dividido en dos partes principales:
 
 - GitHub: **[Danilo-Doria](https://github.com/Danilo-Doria)**
 - LinkedIn: **[Danilo Doria Diaz](https://www.linkedin.com/in/danilodd)**
-- Correo: **danilodoria519@gmail.com**
+- Mail: **danilodoria519@gmail.com**
 
-## 📄 Licence
+## 📄 License
 
-This project is for educational and personal use.
+This project was created for educational purposes and personal learning.

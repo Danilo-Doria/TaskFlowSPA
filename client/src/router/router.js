@@ -1,4 +1,4 @@
-import { showAllUsers } from "../controllers/admin.controller.js";
+import { adminSetup } from "../controllers/admin.controller.js";
 import { AccessUser, registerUser } from "../controllers/auth.controller.js";
 import { showUserInfo } from "../controllers/dashboard.controller.js";
 import { editUserInfo } from "../controllers/profile.controller.js";
@@ -27,27 +27,40 @@ const routes = {
   "/tasks": tasks,
 };
 
+// RUN FUNCTIONS PER EACH VIEW
 function runcontrollers(path) {
+  switch (path) {
+    case "/register":
+      registerUser();
+      break;
 
-  if (path === "/register") {
-    registerUser();
-  } else if (path === "/login") {
-    AccessUser();
-  } else if (path === "/tasks") {
-    showUserTasks();
-  } else if (path === "/task-form") {
-    createEditTask();
-  } else if (path === "/dashboard") {
-    showUserInfo();
-  } else if (path === "/profile") {
-    editUserInfo();
-  } else if (path === "/admin") {
-    showAllUsers();
+    case "/login":
+      AccessUser();
+      break;
+
+    case "/tasks":
+      showUserTasks();
+      break;
+
+    case "/task-form":
+      createEditTask();
+      break;
+
+    case "/dashboard":
+      showUserInfo();
+      break;
+
+    case "/profile":
+      editUserInfo();
+      break;
+
+    case "/admin":
+      adminSetup();
+      break;
   }
 }
 
 export function router(path) {
-
   const view = routes[path];
 
   if (!view) {
@@ -56,7 +69,7 @@ export function router(path) {
   }
 
   const session = getSession();
-  
+
   const publicRoutes = ["/", "/login", "/register"];
 
   if (!publicRoutes.includes(path) && !session) {

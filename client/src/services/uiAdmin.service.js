@@ -1,3 +1,4 @@
+// RENDER ALL USERS IN ADMIN VIEW
 export function renderUsersAdmin(users) {
     const usersContainer = document.getElementById("users-container");
     let html = "";
@@ -38,7 +39,7 @@ export function renderUsersAdmin(users) {
 
 }
 
-
+// RENDER ALL TASKS IN ADMIN VIEW
 export function renderTasksAdmin(tasks) {
     const tasksContainer = document.getElementById("task-container");
     let html = "";
@@ -50,7 +51,8 @@ export function renderTasksAdmin(tasks) {
                 <div>
                     <p class="task-state text-xs font-bold uppercase tracking-[0.25em] text-blue-600">${task.status} - ${new Date(task.date).toLocaleDateString("es-CO")}</p>
                     <h2 class="task-title text-md font-bold text-slate-900">${task.title}</h2>
-                    <p class="task-description text-md max-w-2xl text-slate-600">${task.description} - Creado por: ${task.user.name}</p>
+                    <p class="task-description text-sm max-w-2xl text-slate-600">${task.description}</p>
+                    <p class="text-sm max-w-2xl text-slate-600">Creado por: ${task.user.name} ${task.user.lastName}</p>
                 </div>
 
                 <div class="flex gap-2">

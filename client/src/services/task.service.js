@@ -4,13 +4,13 @@ const tasksEndPoint = "http://localhost:3000/tasks";
 export async function consultAllTasks() {
     try {
         const response = await fetch(`${tasksEndPoint}?_embed=user`);
-        
+
         if (!response.ok) {
             throw new Error(`Error ${response.status}`);
         }
 
         const data = await response.json();
-        
+
         return data;
 
     } catch (error) {
@@ -22,7 +22,7 @@ export async function consultAllTasks() {
 export async function consultTasksById(userId) {
     try {
         const response = await fetch(`${tasksEndPoint}?userId=${userId}`)
-        
+
         if (!response.ok) {
             throw new Error(`Error ${response.status}`);
         }
@@ -46,7 +46,7 @@ export async function createTask(task) {
             },
             body: JSON.stringify(task)
         });
-        
+
         if (!response.ok) {
             throw new Error(`Error ${response.status}`);
         }
@@ -112,7 +112,7 @@ export async function deleteTaskById(userId) {
         }
 
         const tasks = await response.json();
-        
+
         for (const task of tasks) {
             await deleteTask(task.id)
         }

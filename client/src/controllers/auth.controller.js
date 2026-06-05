@@ -5,7 +5,7 @@ import { createUser } from "../services/register.service.js";
 import Swal from 'sweetalert2';
 
 
-// REGISTER
+// REGISTER USER
 export function registerUser() {
     const registerForm = document.getElementById("register-form");
     const registerName = document.getElementById("register-name");
@@ -14,6 +14,7 @@ export function registerUser() {
     const registerPassword = document.getElementById("register-password");
     const registerRole = document.getElementById("register-role");
 
+    // REGISTER USER FORM
     registerForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -42,7 +43,7 @@ export function registerUser() {
                 event.target.reset();
 
                 return
-                
+
             } else {
                 Swal.fire({
                     position: "center",
@@ -64,12 +65,13 @@ export function registerUser() {
     });
 }
 
-// LOGIN
+// LOGIN USER
 export function AccessUser() {
     const loginForm = document.getElementById("login-form");
     const email = document.getElementById("email");
     const password = document.getElementById("password");
 
+    // LOGIN USER FORM
     loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 

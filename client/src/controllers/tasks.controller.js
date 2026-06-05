@@ -1,9 +1,8 @@
 import { navigate } from "../router/router";
 import { getSession } from "../services/session.service";
-import { consultAllTasks, consultTasksById, createTask, deleteTask, editTask } from "../services/task.service";
+import { consultTasksById, createTask, deleteTask, editTask } from "../services/task.service";
 import { renderTasks } from "../services/uiTasks.service";
 import Swal from 'sweetalert2';
-
 
 let editTaskData = null;
 
@@ -66,7 +65,6 @@ export async function showUserTasks() {
 
 
 // CREATE/EDIT TASK
-
 export function createEditTask() {
     const currentUser = getSession();
 
@@ -84,6 +82,7 @@ export function createEditTask() {
             createEditDate.value = editTaskData.date
     }
 
+    // CREATE/EDIT TASK FORM
     createEditTaskForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
