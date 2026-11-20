@@ -66,7 +66,7 @@ The project is divided in two main parts:
 ## 👨‍💻 Author
 
 - GitHub: **[Danilo-Doria](https://github.com/Danilo-Doria)**
-- LinkedIn: **[Danilo Doria Diaz](https://www.linkedin.com/in/danilodd)**
+- LinkedIn: **[Danilo Doria Diaz](https://www.linkedin.com/in/danilo-doria-diaz)**
 - Mail: **danilodoria519@gmail.com**
 
 ## 📄 License
